@@ -2,6 +2,8 @@
 import math
 from traitement_image import *
 NOIR = 0
+
+
 def distance(coup1, coup2):
     n = len(coup1)
     somme = 0
@@ -18,6 +20,8 @@ def convertir(im):
             m[j][i] = pixels[i,j]
     return m
 """
+
+
 def point_plus_brillant(im, n, rayon):
     """
     # matrice : pixels[i,j]
@@ -34,14 +38,16 @@ def point_plus_brillant(im, n, rayon):
             for rho in range(hauteur):
                 if max <= pixels[(theta, rho)] :
                     max = pixels[(theta, rho)]
-                    l[t] = (theta, rho)#(theta, rho, max) anciennement
+                    l[t] = (theta, rho)  # (theta, rho, max) anciennement
         colorer(im, rayon, NOIR, l[t])
     o = []
-    #print o
+    # print o
     for i in l:
         o.extend([i])
-        #print o
+        # print o
     return o
+
+
 def assez_loin(couple, liste, rayon):
     """
     Fonction qui a un couple de coordonnées, renvoie une valeur de vérité 
@@ -54,14 +60,15 @@ def assez_loin(couple, liste, rayon):
             valeur = False
             break
     return valeur
+
+
 def colorer(im, rayon, couleur, point):
     pix = im.load()
     za = ImageDraw.Draw(im)
     longueur, hauteur = im.size
     for i in range(-rayon[0],rayon[0]+1):
         for j in range(-rayon[1], rayon[1]+1):
-            if i == 0 and j == 0 and longueur <= i+point[0] and 0 > i+point[0] and 0 > j+point[1] and hauteur <= j+ point[1]:
+            if i == 0 and j == 0 and longueur <= i+point[0] and 0 > i+point[0] and 0 > j+point[1] and hauteur <= j+point[1]:
                 pass
             else:
-                za.point((point[0]+i, point[1] +j) , fill = couleur)
-                
+                za.point((point[0]+i, point[1] +j), fill=couleur)

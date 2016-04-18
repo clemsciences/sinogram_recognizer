@@ -4,6 +4,7 @@ import math
 import ImageDraw
 import ImageOps    
 import math
+import time
 #(255, 255, 255) = blanc
 #(0,0,0) = noir
 """
@@ -34,7 +35,9 @@ def transformer(image, seuil, balayage_theta):
                     pix = image_hough.load()
     return image_hough
 """
-def transformer(image, seuil, ampl_theta = 1):
+
+
+def transformer(image, seuil, ampl_theta=1):
     # Prend en paramètres une image pré-traitée (une image don't il ne reste que les contours) et un seuil qui est une entier naturel compris entre 0 et 255
     longueur, hauteur = image.size
     image = ImageOps.grayscale(image)
@@ -51,7 +54,7 @@ def transformer(image, seuil, ampl_theta = 1):
             if pixels[(x,y)] > seuil:
                 for theta in range(dim_espace_hough[0]):
                     rho = x * math.cos(math.radians(theta))+ y * math.sin(math.radians(theta))
-                    #print rho
+                    # print rho
                     if pix[theta,(int(rho)%dim_espace_hough[1])] == 255:
                         pass
                     else:
@@ -63,11 +66,17 @@ im = Image.open("C:/Users/Clément-B/Desktop/ny/pour_tipe.jpg")
 a = transformer(im, 200)
 a.save("C:/Users/Clément-B/Desktop/hough.jpg")
 """
+
+
 def trouver_bord(image_hough, n, rayon):
     """
     Fonction qui cherche les droites qui sont les plus déterminants pour identifier un idéogramme
+    :param image_hough:
+    :param n:
+    :param rayon:
+    :return:
     """
-    str(image_hough) #Truc pas certain
+    str(image_hough)  # Truc pas certain
     image_hough.save("C:/Users/Clément-B/Desktop/ny/utile")
     im = Image.open("C:/Users/Clément-B/Desktop/ny/utile")
     pixels = im.load()
@@ -94,8 +103,12 @@ def trouver_bord(image_hough, n, rayon):
 
 def assez_loin(couple, liste, rayon):
     """
-    Fonction qui a un couple de coordonnées, renvoie une valeur de vérité 
+    Fonction qui a un couple de coordonnées, renvoie une valeur de vérité
     qui affirme si l'ensemble des points de la liste l est assez loin (de l'ordre de rayon) du couple
+    :param couple:
+    :param liste:
+    :param rayon:
+    :return:
     """
     theta = couple[0]
     rho = couple[1]

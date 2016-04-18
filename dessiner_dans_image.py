@@ -1,6 +1,8 @@
 # -*- coding: cp1252 -*-
 from traitement_image import *
 from trouver_brillant import *
+
+
 def dessiner_bord(image, l_points):
     im = image
     t = len(l_points)
@@ -8,7 +10,8 @@ def dessiner_bord(image, l_points):
         im = dessiner_droite(im, i[1], math.radians(i[0]))
         time.sleep(3)
     return im
-    
+
+
 def dessiner_droite(image, rho, theta):
     couleur = (30,30,255)
     longueur, hauteur = image.size

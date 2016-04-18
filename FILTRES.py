@@ -1,3 +1,4 @@
+# -*- coding: cp1252 -*-
 # FILTRES
 dico = dict()
 

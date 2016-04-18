@@ -1,31 +1,35 @@
 # -*- coding: cp1252 -*-
 from PIL import Image
 from FILTRES import *
+from numpy import *
 from traitement_image import *
 from transformee_de_hough import*
 from trouver_brillant import *
 from dessiner_dans_image import *
 import os
 import pickle
-def algo_sobel(image) :
+
+
+def algo_sobel(image):
     a = image
-    #a = convolution(a, FLOU)
+    # a = convolution(a, FLOU)
     a = double_convolution(a, SOBEL_X, SOBEL_Y)
-    #a = convolution(a, FLOU_GAUSSIEN)
+    # a = convolution(a, FLOU_GAUSSIEN)
     pix = a.load()
     a = seuillage(a, moyenne(pix, a.size)+75)
     a = amincir_beaucoup(a)
-    #a = amincir_beaucoup(amincir_beaucoup(amincir_beaucoup(a)))
+    # a = amincir_beaucoup(amincir_beaucoup(amincir_beaucoup(a)))
     #
-    #a = convolution(a, FLOU)
+    # a = convolution(a, FLOU)
     return a
+
 
 def image_de_hough(im, seuil):
     hou = transformer(im, seuil, 2*180)
     return hou
 a = Image.open("C:/Users/Clément-B/Desktop/TIPE/3_points.jpg")
-#b = image_de_hough(a, 100)
-#b.save("C:/Users/Clément-B/Desktop/3_points_hough.jpg")
+# b = image_de_hough(a, 100)
+# b.save("C:/Users/Clément-B/Desktop/3_points_hough.jpg")
 """
 b = Image.open("C:/Users/Clément-B/Desktop/3_points_hough.jpg")
 a = ImageOps.grayscale(a)
@@ -34,16 +38,19 @@ b = inverser(b)
 a.save("C:/Users/Clément-B/Desktop/TIPE/3_points.jpg")
 b.save("C:/Users/Clément-B/Desktop/3_points_hough.jpg")
 """
+
+
 def analyse(im):
     pass
 
+
 def marche(nom_image):
-    #C'est la seule fonction qui est autorisée à enregistrer des photos
+    # C'est la seule fonction qui est autorisée à enregistrer des photos
     im = Image.open("C:/Users/Clément-B/Desktop/ny/collection/"+nom_image)
     imag = ImageOps.grayscale(im)
     imag = algo_sobel(imag)
     print "OOOOOH ETTTT"
-    #imag = amincir_beaucoup(amincir_beaucoup(amincir_beaucoup(amincir_beaucoup(imag))))
+    # imag = amincir_beaucoup(amincir_beaucoup(amincir_beaucoup(amincir_beaucoup(imag))))
     imag = inverser(imag)
     imag.save("C:/Users/Clément-B/Desktop/ny/traitees/aaatraitee_"+nom_image)
     imag = image_de_hough(imag, 240)

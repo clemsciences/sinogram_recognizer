@@ -13,15 +13,17 @@ def optimiser_decoupage(n, taille):
     a = 0
     b = 0
     for i in range(n[0], taille[0]):
-        if taille[0]%float(i) == 0:
+        if taille[0] % float(i) == 0:
             a = i
             break
     for i in range(n[1], taille[1]):
-        if taille[1]%float(i) == 0:
+        if taille[1] % float(i) == 0:
             b = i
             break
-    return (a,b)
-def moyenne(n, c , image):
+    return a, b
+
+
+def moyenne(n, c, image):
     image = ImageOps.grayscale(image)
     pixels = image.load()
     somme = 0
@@ -32,7 +34,8 @@ def moyenne(n, c , image):
             except:
                 print c[0], n[0]
                 print i,j
-    return (somme /float(n[0]*n[1]))
+    return somme / float(n[0]*n[1])
+
 
 def diminuer_information(image, n):
     """n est un tuple dont les valeurs sont """
@@ -44,6 +47,8 @@ def diminuer_information(image, n):
         for j in range(image.size[1]/n[1]):
             d[str(i)+str(j)] = moyenne(n,(i,j), image)
     return d
+
+
 def diminuer_image(image, n):
     n = optimiser_decoupage(n, image.size)
     print n
@@ -52,8 +57,10 @@ def diminuer_image(image, n):
     za = ImageDraw.Draw(ny)
     for i in range(image.size[1]):
         for j in range(image.size[0]):
-            za.point((i,j), fill = d[str(i/n[0])+str(i/n[0])])
+            za.point((i, j), fill=d[str(i/n[0])+str(i/n[0])])
     return ny
+
+
 def reduire_encadrement(image, a,b):
     """on obtient la restriction de l'image à un rectangle de coin supérieur gauche de coordonnée a et de coin inférieur droite de coordonnée b"""
     pixels = image.load()

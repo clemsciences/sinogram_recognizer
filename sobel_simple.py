@@ -1,7 +1,7 @@
 # -*- coding: cp1252 -*-
 import algo_complexes
 print "départ"
-import Image, ImageOps
+from PIL import Image, ImageOps
 from FILTRES import *
 from traitement_image import *
 a = Image.open("D:\IMG_6730.jpg")
