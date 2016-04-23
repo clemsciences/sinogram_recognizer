@@ -20,12 +20,12 @@ def dessiner_droite(image, rho, theta):
     
     if theta % math.pi == 0:
         for y in range(hauteur):
-            za.point((int(rho), y), fill = couleur)
+            za.point((int(rho), y), fill=couleur)
     else:
         for x in range(longueur):
-            y = int(-math.cos(theta)/math.sin(theta)*x+ rho/math.sin(theta))
+            y = int(-math.cos(theta)/math.sin(theta)*x + rho/math.sin(theta))
             if y > hauteur or y < 0:
                 pass
             else:
-                za.point((x, y), fill = couleur)
+                za.point((x, y), fill=couleur)
     return image

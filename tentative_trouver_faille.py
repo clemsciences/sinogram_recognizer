@@ -4,6 +4,7 @@ from PIL import Image, ImageOps
 import time
 from algo_complexes import *
 
+
 def marche(nom_image):
     #C'est la seule fonction qui est autoris�e � enregistrer des photos
     im = Image.open("C:/Users/Cl�ment-B/Desktop/ny/collection/"+nom_image)

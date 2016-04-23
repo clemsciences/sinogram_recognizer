@@ -30,14 +30,13 @@ def point_plus_brillant(im, n, rayon):
     longueur, hauteur = im.size
     pixels = im.load()
     l = []
-    max = 0      
     for t in range(n):
-        max = 0
+        maxi = 0
         l.append([0])
         for theta in range(longueur):
             for rho in range(hauteur):
-                if max <= pixels[(theta, rho)] :
-                    max = pixels[(theta, rho)]
+                if maxi <= pixels[(theta, rho)]:
+                    maxi = pixels[(theta, rho)]
                     l[t] = (theta, rho)  # (theta, rho, max) anciennement
         colorer(im, rayon, NOIR, l[t])
     o = []
@@ -68,7 +67,7 @@ def colorer(im, rayon, couleur, point):
     longueur, hauteur = im.size
     for i in range(-rayon[0],rayon[0]+1):
         for j in range(-rayon[1], rayon[1]+1):
-            if i == 0 and j == 0 and longueur <= i+point[0] and 0 > i+point[0] and 0 > j+point[1] and hauteur <= j+point[1]:
+            if i == 0 and j == 0 > i + point[0] >= longueur and 0 > j + point[1] >= hauteur:
                 pass
             else:
                 za.point((point[0]+i, point[1] +j), fill=couleur)

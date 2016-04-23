@@ -5,8 +5,8 @@ import ImageDraw
 import ImageOps    
 import math
 import time
-#(255, 255, 255) = blanc
-#(0,0,0) = noir
+# (255, 255, 255) = blanc
+# (0,0,0) = noir
 """
 #Variante non finie
 def transformer(image, seuil, balayage_theta):
@@ -79,6 +79,7 @@ def trouver_bord(image_hough, n, rayon):
     str(image_hough)  # Truc pas certain
     image_hough.save("C:/Users/Clément-B/Desktop/ny/utile")
     im = Image.open("C:/Users/Clément-B/Desktop/ny/utile")
+    nom_image_hough = "ihbgkbs"
     pixels = im.load()
     longueur, hauteur = im.size
     za = ImageDraw.Draw(im)

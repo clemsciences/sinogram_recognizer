@@ -5,9 +5,9 @@ import time
 
 
 def trouver_bord(nom_image_hough, n):
-    im = Image.open("C:/Users/Cl�ment-B/Desktop/ny/"+nom_image_hough)
-    im.save("C:/Users/Cl�ment-B/Desktop/ny/utile_"+nom_image_hough)
-    im = Image.open("C:/Users/Cl�ment-B/Desktop/ny/utile_"+nom_image_hough)
+    im = Image.open("C:/Users/Clément-B/Desktop/ny/"+nom_image_hough)
+    im.save("C:/Users/Clément-B/Desktop/ny/utile_"+nom_image_hough)
+    im = Image.open("C:/Users/Clément-B/Desktop/ny/utile_"+nom_image_hough)
     pixels = im.load()
     longueur, hauteur = im.size
     za = ImageDraw.Draw(im)
